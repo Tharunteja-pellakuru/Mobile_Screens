@@ -12,10 +12,24 @@ import alley91Grid6V2 from '../../assets/images/alley91-grid-6-v2.png';
 const ExplorePopup = ({ onClose }) => {
     // Lock body scroll on mount
     useEffect(() => {
+        // Save current scroll position
+        const scrollY = window.scrollY;
+        
+        // Lock body scroll with position fixed to prevent iOS bounce scrolling
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
         document.body.style.overflow = 'hidden';
+        
         return () => {
-            document.body.style.overflow = 'unset';
+            // Restore body scroll
             document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollY);
         };
     }, []);
 
@@ -25,9 +39,20 @@ const ExplorePopup = ({ onClose }) => {
     const printCollateralImages = [alley91Grid4V2, alley91Grid5V2];
     const menuDesignImages = [alley91Grid6V2, alley91Grid1V2];
 
+    // Handle touch/scroll events on overlay to prevent background scrolling
+    const handleOverlayTouch = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
     // Use React Portal to render at the document body level, ensuring it's on top of everything
     return ReactDOM.createPortal(
-        <div className="explore-popup-overlay" onClick={onClose}>
+        <div 
+            className="explore-popup-overlay" 
+            onClick={onClose}
+            onTouchMove={handleOverlayTouch}
+            onWheel={handleOverlayTouch}
+        >
             <div className="explore-popup-content" onClick={(e) => e.stopPropagation()}>
 
                 {/* Close Button */}

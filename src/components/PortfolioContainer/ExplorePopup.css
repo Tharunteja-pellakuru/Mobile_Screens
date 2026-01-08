@@ -13,6 +13,8 @@
     align-items: center;
     opacity: 0;
     animation: popupFadeIn 0.3s forwards;
+    touch-action: none; /* Prevent touch scrolling on overlay */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
 }
 
 .explore-popup-content {
@@ -29,6 +31,7 @@
     opacity: 0;
     animation: popupScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     overflow: hidden; /* Clips children to rounded corners */
+    touch-action: auto; /* Allow touch scrolling within popup */
 }
 
 /* Close Button */
