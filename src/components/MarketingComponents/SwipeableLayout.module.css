@@ -88,26 +88,26 @@
 /* FIXED HEADER */
 .fixedHeader {
   flex-shrink: 0;
-  padding: 18px 20px 8px;
-  /* Optimized for mobile viewport */
+  padding: 15px 20px 6px;
+  /* Further reduced for full viewport fit */
   text-align: center;
   background: transparent;
   z-index: 10;
 }
 
 .headingBlock {
-  margin-bottom: 8px;
-  /* Reduced for mobile */
+  margin-bottom: 6px;
+  /* Minimal spacing */
 }
 
 .heading {
   font-family: 'Caveat', cursive;
   font-weight: 500;
-  font-size: clamp(28px, 9vw, 44px);
-  /* Reduced for better mobile fit */
+  font-size: clamp(26px, 8.5vw, 42px);
+  /* Further reduced */
   font-style: italic;
-  line-height: 0.95;
-  /* Tighter for mobile */
+  line-height: 0.9;
+  /* Very tight */
   color: #000;
   text-align: center;
   margin: 0;
@@ -127,27 +127,27 @@
 
 .underlineImage {
   position: absolute;
-  bottom: -16px;
-  /* Adjusted for smaller font */
+  bottom: -14px;
+  /* Adjusted */
   left: 30%;
   width: 50%;
-  height: 22px;
-  /* Slightly smaller */
+  height: 20px;
+  /* Smaller */
   z-index: -1;
   pointer-events: none;
 }
 
 .description {
   font-family: 'Mulish', sans-serif;
-  font-size: clamp(10px, 2.3vh, 12px);
-  /* Reduced for mobile */
+  font-size: clamp(9.5px, 2.2vh, 11px);
+  /* Further reduced */
   color: #333;
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.2;
   /* Tighter */
   max-width: 280px;
-  margin: 0 auto 3px;
-  /* Reduced margin */
+  margin: 0 auto 2px;
+  /* Minimal margin */
 }
 
 .swipeArea {
@@ -180,11 +180,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(3px, 1.5vh, 10px) 15px;
-  /* Reduced padding to prevent overflow */
+  padding: clamp(2px, 1vh, 8px) 15px;
+  /* Minimal padding */
   box-sizing: border-box;
   overflow: visible;
-  /* Allow jumbo shadows to bleed */
 }
 
 .card::-webkit-scrollbar {
@@ -203,8 +202,8 @@
 /* FIXED FOOTER */
 .fixedFooter {
   flex-shrink: 0;
-  padding: 5px 20px 20px;
-  /* Reduced padding for better mobile fit */
+  padding: 3px 20px 16px;
+  /* Optimized to fit both lines */
   text-align: center;
   background: transparent;
   z-index: 10;
@@ -214,24 +213,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  /* Reduced gap */
-  margin-bottom: 6px;
-  /* Reduced spacing */
+  gap: 8px;
+  /* Minimal gap */
+  margin-bottom: 4px;
+  /* Minimal spacing */
   flex-wrap: wrap;
 }
 
 .footerLine:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
-  /* Removed extra padding */
 }
 
 .footerText {
   font-family: 'Caveat', cursive;
   font-weight: 500;
-  font-size: clamp(15px, 3.2vh, 20px);
-  /* Reduced for mobile */
+  font-size: clamp(14px, 3vh, 18px);
+  /* Further reduced */
   color: #1a1a1a;
   white-space: nowrap;
 }
@@ -239,7 +237,8 @@
 .footerIcons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  /* Reduced gap */
 }
 
 .socialIcon,
@@ -261,47 +260,47 @@
 /* Extra small mobile (320px - 374px) */
 @media (max-width: 374px) {
   .fixedHeader {
-    padding: 15px 15px 6px;
-    /* Further reduced for tiny screens */
+    padding: 12px 15px 5px;
+    /* Minimal top padding */
   }
   
   .headingBlock {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   
   .heading {
-    font-size: clamp(24px, 8vw, 28px);
-    line-height: 0.9;
+    font-size: clamp(22px, 7.5vw, 26px);
+    line-height: 0.85;
   }
   
   .underlineImage {
-    bottom: -14px;
-    height: 20px;
-  }
-  
-  .description {
-    font-size: 10px;
-    max-width: 250px;
-    line-height: 1.2;
-    margin: 0 auto 2px;
-  }
-  
-  .footerText {
-    font-size: clamp(13px, 3.5vw, 16px);
-  }
-  
-  .footerLine {
-    gap: 8px;
-    margin-bottom: 5px;
-  }
-  
-  .footerIconImg {
-    width: 18px;
+    bottom: -12px;
     height: 18px;
   }
   
+  .description {
+    font-size: 9px;
+    max-width: 250px;
+    line-height: 1.15;
+    margin: 0 auto 1px;
+  }
+  
+  .footerText {
+    font-size: clamp(12px, 3.2vw, 15px);
+  }
+  
+  .footerLine {
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+  
+  .footerIconImg {
+    width: 16px;
+    height: 16px;
+  }
+  
   .fixedFooter {
-    padding: 4px 15px 16px;
+    padding: 2px 15px 14px;
   }
 }
 
