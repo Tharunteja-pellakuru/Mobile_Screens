@@ -88,8 +88,8 @@
 /* FIXED HEADER */
 .fixedHeader {
   flex-shrink: 0;
-  padding: 60px 20px 10px;
-  /* Increased top padding from 40px to 60px */
+  padding: 40px 20px 10px;
+  /* Reduced from 60px to 40px to give footer more space */
   text-align: center;
   background: transparent;
   z-index: 10;
