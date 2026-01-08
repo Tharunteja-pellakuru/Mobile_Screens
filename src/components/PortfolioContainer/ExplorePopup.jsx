@@ -26,7 +26,7 @@ const ExplorePopup = ({ onClose }) => {
             document.body.style.position = '';
             document.body.style.top = '';
             document.body.style.width = '';
-            document.body.style.overflow = '';
+            document.body.style.overflow = '';  
             
             // Restore scroll position
             window.scrollTo(0, scrollY);
