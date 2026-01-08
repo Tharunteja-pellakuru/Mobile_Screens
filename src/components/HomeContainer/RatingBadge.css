@@ -1,0 +1,44 @@
+.rating-badge-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Center the text content */
+    padding-top: 25px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.corner-accent-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* Anchor image to right */
+    width: clamp(35px, 9vw, 65px); /* Further reduced scaling for medium screens */
+    height: auto;
+    z-index: -1;
+    opacity: 1;
+}
+
+.rating-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+    /* No specific margins needed as flex centers it */
+}
+
+.rating-content span {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(0.9rem, 4vw, 1.4rem); /* Responsive font size */
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.google-logo {
+    height: clamp(16px, 5vw, 24px); /* Responsive height */
+    width: auto;
+}

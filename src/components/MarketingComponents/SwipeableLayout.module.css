@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600&family=Mulish:wght@400&display=swap');
+
+.pinnedWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.pinnedContainer {
+  /* This will be our main container that matches pageContainer functionality */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/images/CardBG.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pinnedContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Full page container */
+.pageContainer {
+  position: relative;
+  /* Changed from fixed to participate in scroll flow */
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  /* Dynamic viewport height for mobile browsers */
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/images/CardBG.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden !important;
+  /* Block all global scrolling */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pageContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Fade-out gradient overlays */
+.pageContainer::before,
+.pageContainer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  /* Height of fade effect */
+  z-index: 5;
+  /* Below header/footer (z-index: 10) but above background */
+  pointer-events: none;
+  /* Allow interactions through the gradient */
+}
+
+/* Top fade - transparent to white */
+.pageContainer::before {
+  top: 0;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+/* Bottom fade - transparent to white */
+.pageContainer::after {
+  bottom: 0;
+  background: linear-gradient(to top,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.8) 30%,
+      rgba(255, 255, 255, 0) 100%);
+}
+
+/* FIXED HEADER */
+.fixedHeader {
+  flex-shrink: 0;
+  padding: 60px 20px 10px;
+  /* Increased top padding from 40px to 60px */
+  text-align: center;
+  background: transparent;
+  z-index: 10;
+}
+
+.headingBlock {
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: clamp(32px, 10vw, 48px);
+  /* Scaled for 380px ref */
+  font-style: italic;
+  line-height: 1.0;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.line1,
+.line2 {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.underlineImage {
+  position: absolute;
+  bottom: -20px;
+  left: 30%;
+  /* Adjusted from -5% for better alignment with 'your' */
+  width: 50%;
+  /* Adjusted from 75% */
+  height: 26px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.description {
+  font-family: 'Mulish', sans-serif;
+  font-size: clamp(11px, 2.5vh, 13px);
+  color: #333;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.swipeArea {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: visible;
+  /* Prevent any clipping of shadows or curves */
+  touch-action: none;
+  /* Allow JS to handle all touch gestures */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cardsWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5px, 2vh, 15px) 15px;
+  /* Stripped padding */
+  box-sizing: border-box;
+  overflow: visible;
+  /* Allow jumbo shadows to bleed */
+}
+
+.card::-webkit-scrollbar {
+  display: none !important;
+}
+
+.active {
+  z-index: 2;
+}
+
+/* Pagination dots hidden */
+.pagination {
+  display: none !important;
+}
+
+/* FIXED FOOTER */
+.fixedFooter {
+  flex-shrink: 0;
+  padding: 5px 20px 30px;
+  /* Increased bottom padding from 15px to 30px */
+  text-align: center;
+  background: transparent;
+  z-index: 10;
+}
+
+.footerLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.footerLine:last-child {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  /* Added padding below "& promote you using" line */
+}
+
+.footerText {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: clamp(16px, 3.5vh, 22px);
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.footerIcons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.socialIcon,
+.toolIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.socialIcon:hover,
+.toolIcon:hover {
+  transform: scale(1.15);
+}
+
+/* Responsive adjustments */
+
+/* Extra small mobile (320px - 374px) */
+@media (max-width: 374px) {
+  .fixedHeader {
+    padding: 40px 15px 8px;
+  }
+  
+  .heading {
+    font-size: clamp(28px, 9vw, 32px);
+  }
+  
+  .description {
+    font-size: 11px;
+    max-width: 260px;
+    line-height: 1.4;
+  }
+  
+  .footerText {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+  
+  .footerIconImg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Small mobile (375px - 399px) */
+@media (min-width: 375px) and (max-width: 399px) {
+  .description {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  
+  .footerText {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+}
+
+/* Standard mobile (400px - 767px) */
+@media (min-width: 400px) {
+  .description {
+    font-size: 15px;
+    max-width: 360px;
+  }
+
+  .footerText {
+    font-size: 24px;
+  }
+  
+  .footerIconImg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .fixedHeader {
+    padding: 60px 40px 15px;
+  }
+
+  .description {
+    font-size: 16px;
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  .footerText {
+    font-size: 26px;
+  }
+
+  .card {
+    justify-content: center;
+    padding: clamp(15px, 3vh, 40px) 20px;
+  }
+  
+  .footerIconImg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Large tablet / Small desktop (1024px - 1199px) */
+@media (min-width: 1024px) {
+  .fixedHeader {
+    padding: 70px 50px 20px;
+  }
+  
+  .heading {
+    font-size: clamp(40px, 5vw, 52px);
+  }
+  
+  .description {
+    font-size: 17px;
+    max-width: 600px;
+  }
+  
+  .footerText {
+    font-size: 28px;
+  }
+  
+  .card {
+    padding: clamp(20px, 3vh, 50px) 30px;
+  }
+}
+
+/* Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .fixedHeader {
+    padding: 80px 60px 25px;
+  }
+  
+  .heading {
+    font-size: 52px;
+  }
+  
+  .description {
+    font-size: 18px;
+    max-width: 700px;
+  }
+  
+  .footerText {
+    font-size: 30px;
+  }
+  
+  .footerIconImg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .card {
+    padding: clamp(25px, 3vh, 60px) 40px;
+  }
+}
+
+.footerIconImg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

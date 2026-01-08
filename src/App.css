@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip !important;
+  overflow-y: auto !important;
+  background-image: url('./assets/images/CardBG.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  touch-action: pan-y;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
+
+/* Force the fixed Marketing container to be part of the flow */
+div[class*="pageContainer"] {
+  position: relative !important;
+  height: 100vh !important;
+  width: 100% !important;
+  background-image: url('./assets/images/CardBG.png') !important;
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  overflow-x: clip !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Move the "fixed" footer to the bottom of its section */
+header[class*="fixedHeader"],
+footer[class*="fixedFooter"] {
+  position: relative !important;
+  padding-bottom: 30px !important;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

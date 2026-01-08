@@ -1,0 +1,256 @@
+.portfolio-section {
+    padding: 0 20px 100px;
+    /* Bottom padding for nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: white;
+}
+
+.portfolio-description {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    /* Replaced var(--font-main) */
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    margin-bottom: 30px;
+    max-width: 90%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile showcase */
+/* Mobile Showcase Wrapper */
+.mobile-showcase-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Container for Frame + Screen */
+.mobile-device-frame {
+    position: relative;
+    width: 250px;
+    /* Fixed width for the phone */
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.mobile-showcase-wrapper:hover .mobile-device-frame {
+    transform: translateY(-5px);
+}
+
+/* The Frame Image (Background now) */
+.mobile-frame-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 5;
+    /* Sit behind content */
+    pointer-events: none;
+    display: block;
+}
+
+/* The Screen Content Area (Foreground) */
+.mobile-screen-content {
+    position: absolute;
+    top: 2.5%;
+    left: 7%;
+    width: 86%;
+    height: 94%;
+    border-radius: 30px;
+    /* Match phone corners */
+    overflow: hidden;
+    z-index: 10;
+    /* Sit on top of frame */
+    background: #000;
+    /* Optional: shape for notch if needed, but generic rounded usually works well with this mockup style */
+}
+
+/* Scrolling Animation */
+.mobile-scroll-image {
+    width: 100%;
+    display: block;
+    animation: scrollMobile 40s linear infinite;
+}
+
+@keyframes scrollMobile {
+    0% {
+        transform: translateY(0);
+    }
+
+    45% {
+        transform: translateY(calc(-100% + 400px));
+    }
+
+    /* Scroll to bottom */
+    55% {
+        transform: translateY(calc(-100% + 400px));
+    }
+
+    /* Pause at bottom */
+    100% {
+        transform: translateY(0);
+    }
+
+    /* Scroll back up */
+}
+
+/* Nav arrows adjustment */
+.nav-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 280px;
+    /* Slightly wider than mobile for breathing room */
+    margin-top: 20px;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.company-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    /* Increased from 30px */
+}
+
+.company-logo {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.portfolio-title {
+    width: 160px;
+    height: 30px;
+    color: #000;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    /* Replaced var(--font-hand) */
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+
+/* Tech badges */
+.tech-stack {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 8px 20px;
+    border-radius: 25px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.tech-stack::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #73BF44 0%, #388807 100%);
+    opacity: 0.1;
+    border-radius: 25px;
+    z-index: -1;
+}
+
+.tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tech-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+}
+
+.tech-badge span {
+    color: #333;
+}
+
+/* Info card */
+.info-card {
+    background: #EDF4F9;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.info-card p {
+    position: relative;
+    z-index: 1;
+    font-family: 'Caveat', cursive;
+    /* Replaced var(--font-hand) */
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: #333;
+}
+
+.green-blob {
+    position: absolute;
+    width: 30px;
+    /* Adjusted visual size */
+    height: 40px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Removed ::before blur effect */
+
+.green-blob svg {
+    position: relative;
+    z-index: 2;
+    filter: none;
+    width: 100%;
+    height: 100%;
+}
+
+.blob-left {
+    top: auto;
+    bottom: 30px;
+    /* Moved up from edge */
+    left: -15px;
+    transform: rotate(180deg);
+}
+
+.blob-right {
+    top: 30px;
+    /* Moved down from edge */
+    right: -15px;
+    transform: rotate(0deg);
+}
+
+.blob-right::before {
+    display: none;
+}
