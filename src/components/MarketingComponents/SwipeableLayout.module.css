@@ -444,8 +444,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly; /* Distribute space evenly */
-  padding: 0;
+  justify-content: flex-start; /* Stack from top instead of spacing evenly */
+  gap: clamp(8px, 1.5vh, 20px); /* Controlled gap between elements */
+  padding: clamp(8px, 1.5vh, 20px) 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -458,27 +459,25 @@
 .accentText {
   font-family: 'Caveat', cursive;
   font-weight: 600;
-  font-size: clamp(18px, 3vh, 32px);
+  font-size: clamp(16px, 2.5vh, 32px);
   color: #ff6b3d;
   margin: 0;
   text-align: center;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 /* Section titles */
 .sectionTitle {
   font-family: 'Caveat', cursive;
   font-weight: 600;
-  font-size: clamp(20px, 3.5vh, 42px);
+  font-size: clamp(18px, 3vh, 42px);
   color: #ff6b3d;
   margin: 0;
   text-align: center;
   text-transform: lowercase;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
+  line-height: 1.1;
 }
 
 .digitalMarketingTitle {
@@ -492,26 +491,26 @@
   align-items: center;
   margin: 0;
   flex: 0 0 auto;
-  max-height: 25vh; /* Maximum 25% of card's 70vh */
+  max-height: clamp(100px, 20vh, 220px); /* Reduced max height */
   width: 100%;
 }
 
 .illustration {
   width: auto;
-  max-width: clamp(100px, 30vw, 400px);
-  max-height: 25vh;
+  max-width: clamp(80px, 25vw, 300px);
+  max-height: clamp(100px, 20vh, 220px);
   object-fit: contain;
 }
 
 /* Client Logo Carousel */
 .carouselContainer {
   width: 100%;
-  flex: 1 1 auto; /* Take available space */
+  flex: 1 1 auto; /* Take remaining space */
   min-height: 0;
-  max-height: 45vh; /* Maximum 45vh out of card's 70vh */
+  max-height: clamp(180px, 35vh, 400px); /* Constrained max height */
   position: relative;
   overflow: visible;
-  padding: 1vh 10px;
+  padding: clamp(8px, 1vh, 15px) 10px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   touch-action: pan-y;
@@ -534,14 +533,14 @@
 
 .logoCard {
   background: #fff;
-  border-radius: clamp(7px, 1vh, 15px);
-  padding: clamp(8px, 1.5vh, 20px);
+  border-radius: clamp(6px, 0.8vh, 15px);
+  padding: clamp(6px, 1.2vh, 20px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(70px, 10vh, 180px);
-  height: clamp(70px, 10vh, 180px);
+  width: clamp(60px, 9vh, 180px);
+  height: clamp(60px, 9vh, 180px);
   position: absolute;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -590,10 +589,10 @@
   margin: 0;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 2vh 15px;
-  flex: 1 1 auto; /* Take available space */
+  padding: clamp(10px, 1.5vh, 20px) 15px;
+  flex: 1 1 auto; /* Take remaining space */
   min-height: 0;
-  max-height: 45vh; /* Maximum 45vh out of card's 70vh */
+  max-height: clamp(150px, 35vh, 350px); /* Constrained max height */
   display: flex;
   align-items: center;
   scrollbar-width: none;
@@ -618,17 +617,17 @@
   flex-shrink: 0;
   scroll-snap-align: center;
   background: #fff;
-  border-radius: clamp(10px, 1.5vh, 18px);
-  padding: clamp(12px, 2vh, 28px);
-  margin-right: clamp(10px, 2vw, 25px);
-  width: clamp(130px, 25vw, 300px);
+  border-radius: clamp(8px, 1.2vh, 18px);
+  padding: clamp(10px, 1.8vh, 28px);
+  margin-right: clamp(8px, 1.5vw, 25px);
+  width: clamp(110px, 22vw, 300px);
   height: 90%; /* 90% of carousel height */
-  max-height: 40vh;
+  max-height: clamp(130px, 32vh, 340px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(8px, 1vh, 15px);
+  gap: clamp(6px, 0.8vh, 15px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
@@ -643,13 +642,13 @@
 }
 
 .featureIcon {
-  width: clamp(35px, 5vh, 60px);
-  height: clamp(35px, 5vh, 60px);
+  width: clamp(30px, 4.5vh, 60px);
+  height: clamp(30px, 4.5vh, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-bottom: clamp(5px, 1vh, 12px);
+  margin-bottom: clamp(4px, 0.8vh, 12px);
 }
 
 .featureIcon img {
@@ -660,15 +659,17 @@
 
 .featureText {
   font-family: 'Mulish', sans-serif;
-  font-size: clamp(11px, 1.6vh, 20px);
+  font-size: clamp(10px, 1.4vh, 20px);
   color: #4a4a4a;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.3;
   margin: 0;
   font-weight: 500;
   flex: 1;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Responsive adjustments */
@@ -930,6 +931,11 @@
   .swipeArea {
     height: 70vh; /* Consistent across all sizes */
   }
+
+  .cardContainer {
+    gap: clamp(12px, 2vh, 28px);
+    padding: clamp(12px, 2vh, 28px) 0;
+  }
   
   .accentText {
     font-size: clamp(40px, 4vh, 64px);
@@ -940,7 +946,7 @@
   }
   
   .carouselContainer {
-    max-height: 45vh;
+    max-height: clamp(280px, 42vh, 500px);
     padding: 2vh 30px;
   }
   
@@ -965,23 +971,23 @@
   }
   
   .illustrationWrapper {
-    max-height: 28vh;
+    max-height: clamp(180px, 24vh, 320px);
   }
   
   .illustration {
     max-width: 520px;
-    max-height: 28vh;
+    max-height: clamp(180px, 24vh, 320px);
   }
   
   .featureCarousel {
-    max-height: 45vh;
+    max-height: clamp(240px, 42vh, 450px);
     padding: 3vh 40px;
   }
   
   .featureCard {
     width: clamp(320px, 28vw, 480px);
-    height: 85%;
-    max-height: 38vh;
+    height: 90%;
+    max-height: clamp(220px, 38vh, 420px);
     padding: clamp(28px, 3vh, 42px);
     margin-right: clamp(25px, 3vw, 35px);
     border-radius: clamp(16px, 2vh, 20px);
@@ -995,7 +1001,7 @@
   
   .featureText {
     font-size: clamp(16px, 2vh, 24px);
-    line-height: 1.6;
+    line-height: 1.5;
   }
   
   .fixedFooter {
