@@ -85,29 +85,30 @@
       rgba(255, 255, 255, 0) 100%);
 }
 
-/* FIXED HEADER */
+/* FIXED HEADER - Using vh units for consistent viewport fitting */
 .fixedHeader {
   flex-shrink: 0;
-  padding: 15px 20px 6px;
-  /* Further reduced for full viewport fit */
+  height: 15vh; /* Fixed header height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1vh 20px;
   text-align: center;
   background: transparent;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .headingBlock {
-  margin-bottom: 6px;
-  /* Minimal spacing */
+  margin-bottom: 0.5vh;
 }
 
 .heading {
   font-family: 'Caveat', cursive;
   font-weight: 500;
-  font-size: clamp(26px, 8.5vw, 42px);
-  /* Further reduced */
+  font-size: clamp(22px, 3.5vh, 48px);
   font-style: italic;
-  line-height: 0.9;
-  /* Very tight */
+  line-height: 1.1;
   color: #000;
   text-align: center;
   margin: 0;
@@ -127,37 +128,30 @@
 
 .underlineImage {
   position: absolute;
-  bottom: -14px;
-  /* Adjusted */
+  bottom: -1vh;
   left: 30%;
   width: 50%;
-  height: 20px;
-  /* Smaller */
+  height: clamp(15px, 2vh, 30px);
   z-index: -1;
   pointer-events: none;
 }
 
 .description {
   font-family: 'Mulish', sans-serif;
-  font-size: clamp(9.5px, 2.2vh, 11px);
-  /* Further reduced */
+  font-size: clamp(9px, 1.5vh, 18px);
   color: #333;
   text-align: center;
-  line-height: 1.2;
-  /* Tighter */
-  max-width: 280px;
-  margin: 0 auto 2px;
-  /* Minimal margin */
+  line-height: 1.3;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .swipeArea {
-  flex: 1;
-  min-height: 0;
+  height: 70vh; /* Fixed middle area height */
+  flex-shrink: 0;
   position: relative;
-  overflow: visible;
-  /* Prevent any clipping of shadows or curves */
+  overflow: hidden;
   touch-action: none;
-  /* Allow JS to handle all touch gestures */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -173,17 +167,16 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; /* Fills the 70vh swipeArea */
   transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1),
     opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(2px, 1vh, 8px) 15px;
-  /* Minimal padding */
+  padding: 1vh 20px;
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden; /* Prevent content overflow */
 }
 
 .card::-webkit-scrollbar {
@@ -199,37 +192,37 @@
   display: none !important;
 }
 
-/* FIXED FOOTER */
+/* FIXED FOOTER - Using vh units */
 .fixedFooter {
   flex-shrink: 0;
-  padding: 3px 20px 16px;
-  /* Optimized to fit both lines */
+  height: 15vh; /* Fixed footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1vh 20px;
   text-align: center;
   background: transparent;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .footerLine {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  /* Minimal gap */
-  margin-bottom: 4px;
-  /* Minimal spacing */
+  gap: clamp(6px, 1vw, 12px);
+  margin-bottom: 0.5vh;
   flex-wrap: wrap;
 }
 
 .footerLine:last-child {
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .footerText {
   font-family: 'Caveat', cursive;
   font-weight: 500;
-  font-size: clamp(14px, 3vh, 18px);
-  /* Further reduced */
+  font-size: clamp(12px, 2vh, 24px);
   color: #1a1a1a;
   white-space: nowrap;
 }
@@ -237,8 +230,7 @@
 .footerIcons {
   display: flex;
   align-items: center;
-  gap: 8px;
-  /* Reduced gap */
+  gap: clamp(6px, 1vw, 12px);
 }
 
 .socialIcon,
@@ -448,14 +440,14 @@
 
 .cardContainer {
   width: 100%;
-  height: 100%;
+  height: 100%; /* Fill the card's 70vh */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 0; /* No gap at all */
+  justify-content: space-evenly; /* Distribute space evenly */
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .cardContainer::-webkit-scrollbar {
@@ -466,30 +458,31 @@
 .accentText {
   font-family: 'Caveat', cursive;
   font-weight: 600;
-  font-size: 26px;
+  font-size: clamp(18px, 3vh, 32px);
   color: #ff6b3d;
   margin: 0;
   text-align: center;
+  flex-shrink: 0;
 }
 
 /* Section titles */
 .sectionTitle {
   font-family: 'Caveat', cursive;
   font-weight: 600;
-  font-size: clamp(22px, 5vh, 28px);
+  font-size: clamp(20px, 3.5vh, 42px);
   color: #ff6b3d;
   margin: 0;
   text-align: center;
   text-transform: lowercase;
-  height: 8vh; /* Strict budget */
+  flex-shrink: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: auto;
 }
 
-/* .digitalMarketingTitle removed or reset to avoid pulling content up */
 .digitalMarketingTitle {
-  margin-top: 0;
-  margin-bottom: 0; /* No gap */
+  margin: 0;
 }
 
 /* Illustration wrapper */
@@ -497,27 +490,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px 0;
-  height: 22vh; /* Strict budget */
+  margin: 0;
+  flex: 0 0 auto;
+  max-height: 25vh; /* Maximum 25% of card's 70vh */
   width: 100%;
 }
 
 .illustration {
   width: auto;
-  max-width: clamp(120px, 35vw, 220px);
-  max-height: 20vh; /* Strictly limited by viewport height */
-  aspect-ratio: 4 / 3;
+  max-width: clamp(100px, 30vw, 400px);
+  max-height: 25vh;
   object-fit: contain;
 }
 
 /* Client Logo Carousel */
 .carouselContainer {
   width: 100%;
-  height: 35vh; /* Very compact */
-  max-height: 40vh;
+  flex: 1 1 auto; /* Take available space */
+  min-height: 0;
+  max-height: 45vh; /* Maximum 45vh out of card's 70vh */
   position: relative;
-  overflow: visible; 
-  padding: 15px 10px 0; /* Minimal padding */
+  overflow: visible;
+  padding: 1vh 10px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   touch-action: pan-y;
@@ -532,37 +526,37 @@
   width: 1200px;
   height: 100%;
   left: 50%;
-  top: 5px; /* Very minimal top offset */
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   perspective: 1000px;
   overflow: visible;
 }
 
 .logoCard {
   background: #fff;
-  border-radius: 7px;
-  padding: 10px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* More prominent shadow */
+  border-radius: clamp(7px, 1vh, 15px);
+  padding: clamp(8px, 1.5vh, 20px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(80px, 12vh, 100px); 
-  height: clamp(80px, 12vh, 100px); 
+  width: clamp(70px, 10vh, 180px);
+  height: clamp(70px, 10vh, 180px);
   position: absolute;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   offset-rotate: auto 180deg;
   offset-anchor: 50% 100%;
-  margin: 1px; /* Minimal margin for tight spacing matching image */
+  margin: 1px;
 }
 
 .topCard {
-  offset-path: path("M 1200 150 Q 600 30 0 150"); /* Further tightened */
+  offset-path: path("M 1200 150 Q 600 30 0 150");
   offset-distance: var(--offset-pos);
 }
 
 .bottomCard {
-  offset-path: path("M 1200 290 Q 600 170 0 290"); /* Further tightened */
+  offset-path: path("M 1200 290 Q 600 170 0 290");
   offset-distance: var(--offset-pos);
 }
 
@@ -593,19 +587,19 @@
 .featureCarousel {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  overflow-x: auto; /* Enable manual scroll */
-  overflow-y: visible;
-  padding: 30px 20px; /* Side padding for scroll start/end */
-  height: auto;
-  min-height: 42vh;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2vh 15px;
+  flex: 1 1 auto; /* Take available space */
+  min-height: 0;
+  max-height: 45vh; /* Maximum 45vh out of card's 70vh */
   display: flex;
-  justify-content: center; /* Default, controlled by track margin */
   align-items: center;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
-  scroll-snap-type: x mandatory; /* Snap effect */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
 .featureCarousel::-webkit-scrollbar {
@@ -615,33 +609,31 @@
 .featureTrack {
   display: flex;
   width: max-content;
+  height: 100%;
   overflow: visible;
-  margin: 0 auto; /* Center items if they fit, safe scroll if they don't */
-  /* Animation removed for manual scroll */
+  margin: 0;
 }
-
-/* .featureTrack:hover removed */
-
-/* @keyframes featureScroll removed */
 
 .featureCard {
   flex-shrink: 0;
-  scroll-snap-align: center; /* Snap to center */
+  scroll-snap-align: center;
   background: #fff;
-  border-radius: 12px;
-  padding: clamp(15px, 2vh, 20px);
-  margin-right: 15px; /* Standard margin */
-  width: clamp(140px, 22vw, 180px);
-  height: clamp(120px, 22vh, 180px);
+  border-radius: clamp(10px, 1.5vh, 18px);
+  padding: clamp(12px, 2vh, 28px);
+  margin-right: clamp(10px, 2vw, 25px);
+  width: clamp(130px, 25vw, 300px);
+  height: 90%; /* 90% of carousel height */
+  max-height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(8px, 1vh, 15px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  border: 1px solid rgba(0,0,0,0.03); /* Subtle border for definition */
+  border: 1px solid rgba(0,0,0,0.03);
+  box-sizing: border-box;
 }
 /* Tape pseudo-elements removed */
 
@@ -651,12 +643,13 @@
 }
 
 .featureIcon {
-  width: 45px;
-  height: 45px;
+  width: clamp(35px, 5vh, 60px);
+  height: clamp(35px, 5vh, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  flex-shrink: 0;
+  margin-bottom: clamp(5px, 1vh, 12px);
 }
 
 .featureIcon img {
@@ -666,13 +659,16 @@
 }
 
 .featureText {
-  font-family: 'Mulish', sans-serif; /* Clean sans-serif */
-  font-size: 13px;
+  font-family: 'Mulish', sans-serif;
+  font-size: clamp(11px, 1.6vh, 20px);
   color: #4a4a4a;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
   font-weight: 500;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 /* Responsive adjustments */
@@ -902,3 +898,133 @@
     line-height: 1.6;
   }
 }
+
+/* Large Desktop (1800px+) - Optimized for 1800 x 2400 screens */
+@media (min-width: 1800px) {
+  .fixedHeader {
+    height: 15vh;
+    padding: 1.5vh 100px;
+  }
+  
+  .headingBlock {
+    margin-bottom: 1vh;
+  }
+  
+  .heading {
+    font-size: clamp(60px, 5vh, 96px);
+    line-height: 1.15;
+  }
+  
+  .underlineImage {
+    bottom: -1.5vh;
+    height: clamp(25px, 2.5vh, 40px);
+    width: 52%;
+  }
+  
+  .description {
+    font-size: clamp(20px, 2vh, 32px);
+    max-width: 80%;
+    line-height: 1.5;
+  }
+  
+  .swipeArea {
+    height: 70vh; /* Consistent across all sizes */
+  }
+  
+  .accentText {
+    font-size: clamp(40px, 4vh, 64px);
+  }
+  
+  .sectionTitle {
+    font-size: clamp(44px, 4.5vh, 68px);
+  }
+  
+  .carouselContainer {
+    max-height: 45vh;
+    padding: 2vh 30px;
+  }
+  
+  .carouselTrack {
+    width: 3200px;
+  }
+  
+  .logoCard {
+    width: clamp(180px, 13vh, 280px);
+    height: clamp(180px, 13vh, 280px);
+    border-radius: clamp(12px, 1.5vh, 18px);
+    padding: clamp(16px, 2vh, 24px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  }
+  
+  .topCard {
+    offset-path: path("M 3100 320 Q 1550 80 100 320");
+  }
+  
+  .bottomCard {
+    offset-path: path("M 3100 640 Q 1550 360 100 640");
+  }
+  
+  .illustrationWrapper {
+    max-height: 28vh;
+  }
+  
+  .illustration {
+    max-width: 520px;
+    max-height: 28vh;
+  }
+  
+  .featureCarousel {
+    max-height: 45vh;
+    padding: 3vh 40px;
+  }
+  
+  .featureCard {
+    width: clamp(320px, 28vw, 480px);
+    height: 85%;
+    max-height: 38vh;
+    padding: clamp(28px, 3vh, 42px);
+    margin-right: clamp(25px, 3vw, 35px);
+    border-radius: clamp(16px, 2vh, 20px);
+  }
+  
+  .featureIcon {
+    width: clamp(60px, 6vh, 96px);
+    height: clamp(60px, 6vh, 96px);
+    margin-bottom: clamp(10px, 1.5vh, 18px);
+  }
+  
+  .featureText {
+    font-size: clamp(16px, 2vh, 24px);
+    line-height: 1.6;
+  }
+  
+  .fixedFooter {
+    height: 15vh;
+    padding: 1.5vh 100px;
+  }
+  
+  .footerText {
+    font-size: clamp(32px, 3.5vh, 52px);
+  }
+  
+  .footerLine {
+    gap: clamp(15px, 2vw, 20px);
+    margin-bottom: 1vh;
+  }
+  
+  .footerIcons {
+    gap: clamp(15px, 2vw, 20px);
+  }
+  
+  .socialIcon svg,
+  .toolIcon svg {
+    width: clamp(42px, 4vh, 56px);
+    height: clamp(42px, 4vh, 56px);
+  }
+  
+  .footerIconImg {
+    width: clamp(48px, 4.5vh, 64px);
+    height: clamp(48px, 4.5vh, 64px);
+  }
+}
+
