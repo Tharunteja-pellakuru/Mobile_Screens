@@ -443,4 +443,462 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+}  /* Styles for swipeable middle cards */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600&family=Mulish:wght@400&display=swap');
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0; /* No gap at all */
+  padding: 0;
+  overflow: visible;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Accent text (digital marketing) */
+.accentText {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 26px;
+  color: #ff6b3d;
+  margin: 0;
+  text-align: center;
+}
+
+/* Section titles */
+.sectionTitle {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: clamp(22px, 5vh, 28px);
+  color: #ff6b3d;
+  margin: 0;
+  text-align: center;
+  text-transform: lowercase;
+  height: 8vh; /* Strict budget */
+  display: flex;
+  align-items: center;
+}
+
+/* .digitalMarketingTitle removed or reset to avoid pulling content up */
+.digitalMarketingTitle {
+  margin-top: 0;
+  margin-bottom: 0; /* No gap */
+}
+
+/* Illustration wrapper */
+.illustrationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+  height: 22vh; /* Strict budget */
+  width: 100%;
+}
+
+.illustration {
+  width: auto;
+  max-width: clamp(120px, 35vw, 220px);
+  max-height: 20vh; /* Strictly limited by viewport height */
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+/* Client Logo Carousel */
+.carouselContainer {
+  width: 100%;
+  height: 35vh; /* Very compact */
+  max-height: 40vh;
+  position: relative;
+  overflow: visible; 
+  padding: 15px 10px 0; /* Minimal padding */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-y;
+}
+
+.carouselContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+.carouselTrack {
+  position: absolute;
+  width: 1200px;
+  height: 100%;
+  left: 50%;
+  top: 5px; /* Very minimal top offset */
+  transform: translateX(-50%);
+  perspective: 1000px;
+  overflow: visible;
+}
+
+.logoCard {
+  background: #fff;
+  border-radius: 7px;
+  padding: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* More prominent shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(80px, 12vh, 100px); 
+  height: clamp(80px, 12vh, 100px); 
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  offset-rotate: auto 180deg;
+  offset-anchor: 50% 100%;
+  margin: 1px; /* Minimal margin for tight spacing matching image */
+}
+
+.topCard {
+  offset-path: path("M 1200 150 Q 600 30 0 150"); /* Further tightened */
+  offset-distance: var(--offset-pos);
+}
+
+.bottomCard {
+  offset-path: path("M 1200 290 Q 600 170 0 290"); /* Further tightened */
+  offset-distance: var(--offset-pos);
+}
+
+
+
+
+.logoCard:hover {
+  transform: scale(1.3) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logoPlaceholder {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: #8ed5a8;
+  text-align: center;
+}
+
+/* Feature Carousel */
+.featureCarousel {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Enable manual scroll */
+  overflow-y: visible;
+  padding: 30px 20px; /* Side padding for scroll start/end */
+  height: auto;
+  min-height: 42vh;
+  display: flex;
+  justify-content: center; /* Default, controlled by track margin */
+  align-items: center;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+  scroll-snap-type: x mandatory; /* Snap effect */
+}
+
+.featureCarousel::-webkit-scrollbar {
+  display: none !important;
+}
+
+.featureTrack {
+  display: flex;
+  width: max-content;
+  overflow: visible;
+  margin: 0 auto; /* Center items if they fit, safe scroll if they don't */
+  /* Animation removed for manual scroll */
+}
+
+/* .featureTrack:hover removed */
+
+/* @keyframes featureScroll removed */
+
+.featureCard {
+  flex-shrink: 0;
+  scroll-snap-align: center; /* Snap to center */
+  background: #fff;
+  border-radius: 12px;
+  padding: clamp(15px, 2vh, 20px);
+  margin-right: 15px; /* Standard margin */
+  width: clamp(140px, 22vw, 180px);
+  height: clamp(120px, 22vh, 180px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.03); /* Subtle border for definition */
+}
+/* Tape pseudo-elements removed */
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.featureIcon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.featureIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.featureText {
+  font-family: 'Mulish', sans-serif; /* Clean sans-serif */
+  font-size: 13px;
+  color: #4a4a4a;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+
+/* Extra small mobile (max-width: 380px) */
+@media (max-width: 380px) {
+  .sectionTitle {
+    font-size: clamp(20px, 5vh, 24px);
+  }
+  
+  .accentText {
+    font-size: 22px;
+  }
+  
+  .illustration {
+    max-width: clamp(100px, 30vw, 150px);
+  }
+  
+  .featureCard {
+    margin-right: 8px;
+    width: clamp(130px, 40vw, 160px);
+    height: clamp(110px, 20vh, 150px);
+    padding: 12px;
+  }
+  
+  .featureText {
+    font-size: 11px;
+  }
+
+  .cardContainer {
+    gap: 5px;
+  }
+
+  .logoCard {
+    width: clamp(75px, 11vh, 90px);
+    height: clamp(75px, 11vh, 90px);
+    margin: 0; 
+  }
+}
+
+/* Small mobile (381px - 574px) */
+@media (min-width: 381px) and (max-width: 574px) {
+  .accentText {
+    font-size: 24px;
+  }
+  
+  .sectionTitle {
+    font-size: clamp(24px, 5vh, 28px);
+  }
+  
+  .featureCard {
+    width: clamp(160px, 35vw, 180px);
+    height: clamp(130px, 22vh, 170px);
+  }
+  
+  .logoCard {
+    width: clamp(90px, 13vh, 105px);
+    height: clamp(90px, 13vh, 105px);
+  }
+}
+
+/* Medium mobile / Phablet (575px - 767px) */
+@media (min-width: 575px) {
+  .accentText {
+    font-size: 26px;
+  }
+  
+  .sectionTitle {
+    font-size: 28px;
+  }
+  
+  .illustration {
+    max-width: clamp(140px, 32vw, 200px);
+  }
+  
+  .logoCard {
+    width: clamp(100px, 15vh, 120px);
+    height: clamp(100px, 15vh, 120px);
+  }
+  
+  .featureCard {
+    width: 200px;
+    height: clamp(140px, 23vh, 180px);
+    padding: 18px;
+  }
+  
+  .featureText {
+    font-size: 12px;
+  }
+
+  .featureCarousel {
+    max-width: 100%; 
+    padding: 20px 0;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+  .accentText {
+    font-size: 28px;
+  }
+  
+  .sectionTitle {
+    font-size: 30px;
+  }
+  
+  .carouselContainer {
+    height: auto;
+    flex: 1;
+  }
+  
+  .carouselTrack {
+    width: 1800px;
+  }
+  
+  .logoCard {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .topCard {
+    offset-path: path("M 1700 240 Q 850 40 100 240");
+  }
+  
+  .bottomCard {
+    offset-path: path("M 1700 450 Q 850 210 100 450");
+  }
+  
+  .illustration {
+    width: clamp(160px, 20vw, 220px);
+    height: auto;
+  }
+  
+  .featureCard {
+    width: clamp(200px, 20vw, 240px);
+    height: clamp(150px, 25vh, 200px);
+    padding: 20px;
+    justify-content: center;
+  }
+  
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .featureText {
+    font-size: 13px;
+  }
+
+  .featureCarousel {
+    max-width: 1200px;
+    padding: 40px 0;
+  }
+}
+
+/* Large tablet / Small desktop (1024px - 1199px) */
+@media (min-width: 1024px) {
+  .accentText {
+    font-size: 30px;
+  }
+  
+  .sectionTitle {
+    font-size: 32px;
+  }
+  
+  .carouselTrack {
+    width: 2000px;
+  }
+  
+  .logoCard {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .illustration {
+    max-width: clamp(180px, 22vw, 240px);
+  }
+  
+  .featureCard {
+    width: clamp(220px, 22vw, 260px);
+    height: clamp(160px, 26vh, 210px);
+    padding: 22px;
+  }
+  
+  .featureIcon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .featureText {
+    font-size: 14px;
+  }
+}
+
+/* Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .accentText {
+    font-size: 32px;
+  }
+  
+  .sectionTitle {
+    font-size: 34px;
+  }
+  
+  .logoCard {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .illustration {
+    max-width: 260px;
+  }
+  
+  .featureCard {
+    width: 280px;
+    height: clamp(170px, 28vh, 220px);
+    padding: 24px;
+  }
+  
+  .featureIcon {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .featureText {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }

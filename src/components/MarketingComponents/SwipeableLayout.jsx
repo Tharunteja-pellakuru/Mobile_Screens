@@ -1,10 +1,177 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import styles from './SwipeableLayout.module.css';
 import { InstagramIcon, FacebookIcon, GoogleAdsIcon, MetaIcon } from '../common/Icons';
+import useCarouselScroll from '../../hooks/useCarouselScroll';
 
 // Import assets
 import emailMarketingLogo from '../../assets/logos/Email Marketing.png';
 
+// Client logos for DigitalMarketingCard
+import client1Logo from '../../assets/logos/Client 1.png';
+import client3Logo from '../../assets/logos/Client 3.png';
+import client4Logo from '../../assets/logos/Client 4.png';
+import client5Logo from '../../assets/logos/Client 5.png';
+import client7Logo from '../../assets/logos/Client 7.png';
+import client8Logo from '../../assets/logos/Client 8.png';
+
+// SEO Card assets
+import groupIcon from '../../assets/logos/Group Icon.png';
+import seoIcon from '../../assets/logos/Seo.png';
+import statsIcon from '../../assets/logos/Stats Icon.png';
+import seoTitleImage from '../../assets/images/seo_title_image.png';
+
+// Ad Campaigns Card assets
+import adCampaignImg from '../../assets/images/Ad campaign.png';
+import rupeeIcon from '../../assets/images/Rupee.png';
+import filterIcon from '../../assets/images/Filter.png';
+
+// Reputation Card assets
+import managementImg from '../../assets/images/Management.png';
+import thumbIcon from '../../assets/images/Thumb.png';
+import monitorIcon from '../../assets/images/Monitor.png';
+import dealIcon from '../../assets/images/Deal.png';
+
+// ============ FEATURE CARD CAROUSEL COMPONENT ============
+const FeatureCardCarousel = ({ features }) => {
+  const infiniteFeatures = [
+    ...features, ...features, ...features, ...features,
+    ...features, ...features, ...features, ...features,
+  ];
+
+  return (
+    <div className={styles.featureCarousel}>
+      <div className={styles.featureTrack}>
+        {infiniteFeatures.map((feature, index) => (
+          <div key={index} className={styles.featureCard}>
+            <div className={styles.featureIcon}>
+              <img src={feature.icon} alt="" />
+            </div>
+            <p className={styles.featureText}>{feature.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ============ CARD 1: DIGITAL MARKETING ============
+export const DigitalMarketingCard = () => {
+  const topLogos = [
+    { id: 't1', name: 'Client 1', logo: client1Logo },
+    { id: 't3', name: 'Client 3', logo: client3Logo },
+    { id: 't4', name: 'Client 4', logo: client4Logo },
+    { id: 't5', name: 'Client 5', logo: client5Logo },
+  ];
+
+  const bottomLogos = [
+    { id: 'b1', name: 'Client 7', logo: client7Logo },
+    { id: 'b2', name: 'Client 8', logo: client8Logo },
+  ];
+
+  const displayTopLogos = [...topLogos, ...topLogos];
+  const displayBottomLogos = [...bottomLogos, ...bottomLogos, ...bottomLogos];
+
+  const { getCardStyle, touchHandlers } = useCarouselScroll(0.15);
+
+  return (
+    <div className={styles.cardContainer}>
+      <h2 className={`${styles.sectionTitle} ${styles.digitalMarketingTitle}`}>digital marketing</h2>
+      
+      <div 
+        className={styles.carouselContainer}
+        {...touchHandlers}
+      >
+        <div className={styles.carouselTrack}>
+          {displayTopLogos.map((item, index) => (
+            <div
+              key={`${item.id}-${index}`}
+              className={`${styles.logoCard} ${styles.topCard}`}
+              style={getCardStyle(index, displayTopLogos.length)}
+            >
+              {item.logo ? (
+                <img src={item.logo} alt={item.name} className={styles.logoImage} />
+              ) : (
+                <span className={styles.logoPlaceholder}>{item.name}</span>
+              )}
+            </div>
+          ))}
+          {displayBottomLogos.map((item, index) => (
+            <div
+              key={`${item.id}-${index}`}
+              className={`${styles.logoCard} ${styles.bottomCard}`}
+              style={getCardStyle(index, displayBottomLogos.length)}
+            >
+              {item.logo ? (
+                <img src={item.logo} alt={item.name} className={styles.logoImage} />
+              ) : (
+                <span className={styles.logoPlaceholder}>{item.name}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ============ CARD 2: SEO ============
+export const SeoCard = () => {
+  const features = [
+    { icon: groupIcon, text: 'Drive consistent, high-quality organic traffic.' },
+    { icon: seoIcon, text: "Boost your website's Google rankings and visibility." },
+    { icon: statsIcon, text: 'Improve website conversions through rate optimization.' },
+  ];
+
+  return (
+    <div className={styles.cardContainer}>
+      <h2 className={styles.sectionTitle}>seo</h2>
+      <div className={styles.illustrationWrapper}>
+        <img src={seoTitleImage} alt="SEO" className={styles.illustration} />
+      </div>
+      <FeatureCardCarousel features={features} />
+    </div>
+  );
+};
+
+// ============ CARD 3: AD CAMPAIGNS ============
+export const AdCampaignsCard = () => {
+  const features = [
+    { icon: groupIcon, text: 'Reach the right audience with precisely targeted campaigns.' },
+    { icon: rupeeIcon, text: 'Maximize ROI through data-driven ad strategy and optimization.' },
+    { icon: filterIcon, text: 'Generate quality leads that convert into real customers.' },
+  ];
+
+  return (
+    <div className={styles.cardContainer}>
+      <h2 className={styles.sectionTitle}>ad campaigns</h2>
+      <div className={styles.illustrationWrapper}>
+        <img src={adCampaignImg} alt="Ad Campaigns" className={styles.illustration} />
+      </div>
+      <FeatureCardCarousel features={features} />
+    </div>
+  );
+};
+
+// ============ CARD 4: REPUTATION MANAGEMENT ============
+export const ReputationCard = () => {
+  const features = [
+    { icon: thumbIcon, text: 'Build and maintain a positive brand image across digital platforms.' },
+    { icon: monitorIcon, text: 'Monitor reviews and feedback to protect your online reputation.' },
+    { icon: dealIcon, text: 'Increase trust with authentic engagement and timely responses.' },
+  ];
+
+  return (
+    <div className={styles.cardContainer}>
+      <h2 className={styles.sectionTitle}>online reputation management</h2>
+      <div className={styles.illustrationWrapper}>
+        <img src={managementImg} alt="Reputation Management" className={styles.illustration} />
+      </div>
+      <FeatureCardCarousel features={features} />
+    </div>
+  );
+};
+
+// ============ SWIPEABLE LAYOUT MAIN COMPONENT ============
 const SwipeableLayout = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -20,8 +187,8 @@ const SwipeableLayout = ({ children }) => {
   const isTransitioningRef = useRef(false);
   const wheelDeltaAccumulatorRef = useRef(0);
   const lastInteractionTimeRef = useRef(0);
-  const lastBoundaryTimeRef = useRef(0); // For absorbing boundary inertia
-  const swipeDirectionRef = useRef(null); // Track vertical vs horizontal swipes
+  const lastBoundaryTimeRef = useRef(0);
+  const swipeDirectionRef = useRef(null);
 
   // Sync refs with state
   useEffect(() => {
@@ -68,7 +235,7 @@ const SwipeableLayout = ({ children }) => {
 
   const isLockedRef = useRef(false);
 
-  // Wheel Scroll Handler - The Core of the "Hard Lock"
+  // Wheel Scroll Handler
   useEffect(() => {
     const onScroll = (e) => {
       if (!isLockedRef.current) return;
@@ -81,21 +248,18 @@ const SwipeableLayout = ({ children }) => {
       const isScrollingDown = e.deltaY > 0;
       const isScrollingUp = e.deltaY < 0;
 
-      // Handle Page Scroll Release at Boundaries with "Settle" logic
       const atBottomBoundary = currentIndex === totalCards - 1 && isScrollingDown;
       const atTopBoundary = currentIndex === 0 && isScrollingUp;
 
       if (atBottomBoundary || atTopBoundary) {
-        // If we just hit the boundary, keep the lock for 300ms to absorb inertia
         if (isBoundarySettle) {
           if (e.cancelable) e.preventDefault();
           return;
         }
         wheelDeltaAccumulatorRef.current = 0;
-        return; // Allow natural page scroll after settle
+        return;
       }
 
-      // If we are NOT at a boundary, we MUST block the page scroll strictly
       if (e.cancelable) e.preventDefault();
 
       if (isTransitioningRef.current || isCoolingDown) {
@@ -103,15 +267,12 @@ const SwipeableLayout = ({ children }) => {
         return;
       }
 
-      // 1. Reset accumulator if scroll direction changed (Sign change check)
       if (wheelDeltaAccumulatorRef.current !== 0 && Math.sign(e.deltaY) !== Math.sign(wheelDeltaAccumulatorRef.current)) {
         wheelDeltaAccumulatorRef.current = 0;
       }
 
-      // 2. Accumulate delta
       wheelDeltaAccumulatorRef.current += e.deltaY;
 
-      // 3. One deliberate step per gesture
       if (Math.abs(wheelDeltaAccumulatorRef.current) >= 50) {
         if (wheelDeltaAccumulatorRef.current > 0) {
           goToNext();
@@ -119,7 +280,6 @@ const SwipeableLayout = ({ children }) => {
           goToPrev();
         }
 
-        // If we just landed on a boundary card, start the settle timer
         const newIndex = currentIndexRef.current;
         if (newIndex === 0 || newIndex === totalCards - 1) {
           lastBoundaryTimeRef.current = Date.now();
@@ -133,7 +293,7 @@ const SwipeableLayout = ({ children }) => {
     return () => window.removeEventListener('wheel', onScroll);
   }, [goToNext, goToPrev, totalCards]);
 
-  // Intersection Observer for Locking with wider margin
+  // Intersection Observer
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -145,9 +305,8 @@ const SwipeableLayout = ({ children }) => {
         if (entry.isIntersecting && !wasLocked) {
           const rect = entry.boundingClientRect;
           wheelDeltaAccumulatorRef.current = 0;
-          lastBoundaryTimeRef.current = 0; // Reset boundary settle on entry
+          lastBoundaryTimeRef.current = 0;
 
-          // Direction-aware initialization
           if (rect.top < -50) {
             setCurrentIndex(totalCards - 1);
             currentIndexRef.current = totalCards - 1;
@@ -159,7 +318,7 @@ const SwipeableLayout = ({ children }) => {
       },
       {
         threshold: 0,
-        rootMargin: "-40% 0px -40% 0px" // Robustly detects when component "crosses" screen center
+        rootMargin: "-40% 0px -40% 0px"
       }
     );
 
@@ -167,7 +326,7 @@ const SwipeableLayout = ({ children }) => {
     return () => observer.disconnect();
   }, [totalCards]);
 
-  // Touch Handlers - Re-implemented for Hard Lock
+  // Touch Handlers
   const handleTouchStart = useCallback((e) => {
     touchStartY.current = e.touches[0].clientY;
     touchStartX.current = e.touches[0].clientX;
@@ -184,24 +343,19 @@ const SwipeableLayout = ({ children }) => {
     const totalDeltaY = touchStartY.current - currentY;
     const totalDeltaX = touchStartX.current - currentX;
 
-    // Filter for vertical swipes early
     if (swipeDirectionRef.current === null && (Math.abs(totalDeltaY) > 8 || Math.abs(totalDeltaX) > 8)) {
       swipeDirectionRef.current = Math.abs(totalDeltaY) > Math.abs(totalDeltaX) ? 'vertical' : 'horizontal';
     }
 
     if (swipeDirectionRef.current === 'vertical') {
-      const isSwipingUp = totalDeltaY > 0; // Next
-      const isSwipingDown = totalDeltaY < 0; // Prev
+      const isSwipingUp = totalDeltaY > 0;
+      const isSwipingDown = totalDeltaY < 0;
       const currentIndex = currentIndexRef.current;
 
       const atBoundary = (isSwipingUp && currentIndex === totalCards - 1) || (isSwipingDown && currentIndex === 0);
 
       if (!atBoundary) {
-        // Firmly track and block native scroll while inside the showcase
         if (e.cancelable) e.preventDefault();
-      } else {
-        // Boundary behavior: can we release? 
-        // For touch, we usually allow the browser to take over once boundary is hit for a better feel
       }
     }
 
@@ -221,13 +375,12 @@ const SwipeableLayout = ({ children }) => {
       }
     }
 
-    // Reset
     touchStartY.current = 0;
     touchEndY.current = 0;
     swipeDirectionRef.current = null;
   }, [goToNext, goToPrev]);
 
-  // Add event listeners to the component container
+  // Add event listeners
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
