@@ -1,5 +1,4 @@
 import React from 'react';
-import PortfolioSection from './PortfolioSection';
 import SwipeableLayout, { DigitalMarketingCard, SeoCard, AdCampaignsCard, ReputationCard } from '../MarketingComponents/SwipeableLayout';
 import Background from './Background';
 import './PortfolioContainer.css';
